@@ -1,7 +1,8 @@
 {
   "name": "@studysync/server",
   "scripts": {
-    "dev": "tsc --watch",
+    "dev": "tsx  watch src/index.ts",
+    "typecheck": "tsc --noEmit --watch",
     "test": "vitest",
     "test:watch": "vitest --watch",
     "test:run": "vitest run",

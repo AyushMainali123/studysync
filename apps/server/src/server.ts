@@ -1,17 +1,13 @@
 import morgan from 'morgan';
-import path from 'path';
 import helmet from 'helmet';
 import express, { Request, Response, NextFunction } from 'express';
 import logger from 'jet-logger';
-
 import BaseRouter from '@src/routes';
-
 import Paths from '@src/common/constants/Paths';
 import ENV from '@src/common/constants/ENV';
 import HttpStatusCodes from '@src/common/constants/HttpStatusCodes';
 import { RouteError } from '@src/common/util/route-errors';
 import { NodeEnvs } from '@src/common/constants';
-
 
 /******************************************************************************
                                 Setup
@@ -54,7 +50,6 @@ app.use((err: Error, _: Request, res: Response, next: NextFunction) => {
   }
   return next(err);
 });
-
 
 
 /******************************************************************************
