@@ -1,5 +1,12 @@
 {
   "name": "@studysync/server",
+  "scripts": {
+    "dev": "tsc --watch",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage"
+  },
   "dependencies": {
     "cookie-parser": "^1.4.7",
     "dayjs": "^1.11.13",
@@ -16,6 +23,23 @@
     "morgan": "^1.10.1"
   },
   "devDependencies": {
-    "@types/express": "^5.0.3"
+    "@eslint/js": "^9.33.0",
+    "@stylistic/eslint-plugin-js": "^4.4.1",
+    "@stylistic/eslint-plugin-ts": "^4.4.1",
+    "@types/express": "^5.0.3",
+    "@types/jsonfile": "^6.1.4",
+    "@types/module-alias": "^2.0.4",
+    "@types/morgan": "^1.9.10",
+    "@types/node": "^22.15.3",
+    "@types/supertest": "^6.0.3",
+    "@vitest/coverage-v8": "^3.2.4",
+    "eslint": "^9.33.0",
+    "eslint-plugin-n": "^17.21.3",
+    "supertest": "^7.1.4",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.20.4",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.40.0",
+    "vitest": "^3.2.4"
   }
 }

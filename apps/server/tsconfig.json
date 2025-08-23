@@ -5,6 +5,7 @@
     "lib": ["ES2020"],                   
     "strict": true,
     "baseUrl": "./",
+    "outDir": "./dist",
     "esModuleInterop": true,                 
     "skipLibCheck": true,                     
     "forceConsistentCasingInFileNames": true,
@@ -12,6 +13,7 @@
       "@src/*": ["src/*"]
     },
     "useUnknownInCatchVariables": false,
+    "types": ["vitest/globals"],
   },
   "ts-node": {
     "swc": true,
