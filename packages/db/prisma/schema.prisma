@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model Board {
+    id          String   @id @default(cuid())
+    name        String
+    admin       User    @relation("BoardAdmin", fields: [adminId], references: [id])
+    adminId     String
+    description String?
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    users       User[]   @relation("UsersOnBoard")
+}
+
+
+model User {
+    id        String   @id @default(cuid())
+    email     String   @unique
+    name      String 
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    boards    Board[]  @relation("UsersOnBoard")
+    administeredBoards Board[]  @relation("BoardAdmin")
+}

@@ -1,12 +1,15 @@
 import { IUser } from '@src/models/User';
 import { getRandomInt } from '@src/common/util/misc';
-
 import orm from './MockOrm';
-
+import { UserRepository } from '@studysync/repos';
+import { prisma } from '@studysync/db';
 
 /******************************************************************************
                                 Functions
 ******************************************************************************/
+
+
+const user = new UserRepository(prisma);
 
 /**
  * Get one user.
@@ -37,9 +40,9 @@ async function persists(id: number): Promise<boolean> {
 /**
  * Get all users.
  */
-async function getAll(): Promise<IUser[]> {
-  const db = await orm.openDb();
-  return db.users;
+async function getAll() {
+  const db = await user.findAll();
+  return db;
 }
 
 /**

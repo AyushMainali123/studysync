@@ -14,7 +14,8 @@
     "@studysync/ui": "workspace:*",
     "next": "^15.5.0",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "@studysync/types": "workspace:*"
   },
   "devDependencies": {
     "@studysync/eslint-config": "workspace:*",

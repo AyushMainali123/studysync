@@ -8,6 +8,7 @@ import ENV from '@src/common/constants/ENV';
 import HttpStatusCodes from '@src/common/constants/HttpStatusCodes';
 import { RouteError } from '@src/common/util/route-errors';
 import { NodeEnvs } from '@src/common/constants';
+// import passport from 'passport';
 
 /******************************************************************************
                                 Setup
@@ -21,6 +22,8 @@ const app = express();
 // Basic middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 // Show routes called in console during development
 if (ENV.NodeEnv === NodeEnvs.Dev) {

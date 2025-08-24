@@ -1,0 +1,29 @@
+{
+    "name": "@studysync/db",
+    "version": "1.0.0",
+    "main": "src/index.ts",
+    "scripts": {
+        "dev": "prisma studio",
+        "db:migrate": "prisma migrate dev --skip-generate",
+        "db:deploy": "prisma migrate deploy",
+        "db:generate": "prisma generate"
+    },
+    "dependencies": {
+        "@prisma/client": "^6.14.0",
+        "@prisma/extension-accelerate": "^2.0.2",
+        "pg": "^8.7.1",
+        "prisma": "^6.14.0",
+        "typeorm": "^0.2.34"
+    },
+    "devDependencies": {
+        "@types/jest": "^26.0.0",
+        "@types/node": "^14.18.63",
+        "jest": "^26.0.0",
+        "ts-jest": "^26.0.0",
+        "tsx": "^4.20.4",
+        "typescript": "^4.9.5"
+    },
+    "exports": {
+        ".": "./src/index.ts"
+    }
+}
