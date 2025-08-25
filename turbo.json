@@ -29,7 +29,17 @@
       "persistent": true
     },
     "@studysync/server#build": {
-      "outputs": ["dist/**"]
+      "outputs": ["dist/**"],
+      "env": [
+        "NODE_ENV",
+        "PORT",
+        "HOST",
+        "JET_LOGGER_MODE",
+        "JET_LOGGER_FILEPATH",
+        "JET_LOGGER_TIMESTAMP",
+        "JET_LOGGER_FORMAT",
+        "DISABLE_HELMET"
+      ]
     }
   },
   "globalEnv": ["GOOGLE_CLIENT_ID", "GOOGLE_CLIENT_SECRET", "DATABASE_URL"]
