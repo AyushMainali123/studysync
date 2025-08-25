@@ -8,7 +8,6 @@ import { prisma } from '@studysync/db';
                                 Functions
 ******************************************************************************/
 
-
 const user = new UserRepository(prisma);
 
 /**
@@ -86,7 +85,6 @@ async function delete_(id: number): Promise<void> {
   }
 }
 
-
 // **** Unit-Tests Only **** //
 
 /**
@@ -99,23 +97,20 @@ async function deleteAllUsers(): Promise<void> {
 }
 
 /**
- * Insert multiple users. Can't do multiple at once cause using a plain file 
+ * Insert multiple users. Can't do multiple at once cause using a plain file
  * for nmow.
  */
-async function insertMult(
-  users: IUser[] | readonly IUser[],
-): Promise<IUser[]> {
+async function insertMult(users: IUser[] | readonly IUser[]): Promise<IUser[]> {
   const db = await orm.openDb(),
-    usersF = [ ...users ];
+    usersF = [...users];
   for (const user of usersF) {
     user.id = getRandomInt();
     user.created = new Date();
   }
-  db.users = [ ...db.users, ...users ];
+  db.users = [...db.users, ...users];
   await orm.saveDb(db);
   return usersF;
 }
-
 
 /******************************************************************************
                                 Export default

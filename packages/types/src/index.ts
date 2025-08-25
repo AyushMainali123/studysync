@@ -1,3 +1,3 @@
-import {type  PrismaClient } from "@studysync/db";
+import { type PrismaClient } from '@studysync/db';
 
-export type DBUser = Awaited<ReturnType<PrismaClient["user"]["findUnique"]>>;
+export type DBUser = Awaited<ReturnType<PrismaClient['user']['findUnique']>>;
