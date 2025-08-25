@@ -7,10 +7,11 @@ settings:
 importers:
 
   .:
-    devDependencies:
+    dependencies:
       husky:
         specifier: ^9.1.7
         version: 9.1.7
+    devDependencies:
       lint-staged:
         specifier: ^16.1.5
         version: 16.1.5
