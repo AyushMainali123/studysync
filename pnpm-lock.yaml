@@ -32,6 +32,9 @@ importers:
       '@studysync/repos':
         specifier: workspace:*
         version: link:../../packages/repos
+      '@studysync/types':
+        specifier: workspace:*
+        version: link:../../packages/types
       cookie-parser:
         specifier: ^1.4.7
         version: 1.4.7
@@ -84,9 +87,6 @@ importers:
       '@eslint/js':
         specifier: ^9.33.0
         version: 9.34.0
-      '@studysync/types':
-        specifier: workspace:*
-        version: link:../../packages/types
       '@stylistic/eslint-plugin-js':
         specifier: ^4.4.1
         version: 4.4.1(eslint@9.34.0(jiti@2.5.1))
@@ -5288,7 +5288,7 @@ snapshots:
       '@types/istanbul-lib-coverage': 2.0.6
       collect-v8-coverage: 1.0.2
 
-  '@jest/test-sequencer@26.6.3':
+  '@jest/test-sequencer@26.6.3(ts-node@10.9.2(@types/node@14.18.63)(typescript@4.9.5))':
     dependencies:
       '@jest/test-result': 26.6.2
       graceful-fs: 4.2.11
@@ -5296,7 +5296,11 @@ snapshots:
       jest-runner: 26.6.3(ts-node@10.9.2(@types/node@14.18.63)(typescript@4.9.5))
       jest-runtime: 26.6.3(ts-node@10.9.2(@types/node@14.18.63)(typescript@4.9.5))
     transitivePeerDependencies:
+      - bufferutil
+      - canvas
       - supports-color
+      - ts-node
+      - utf-8-validate
 
   '@jest/transform@26.6.2':
     dependencies:
@@ -7595,7 +7599,7 @@ snapshots:
   jest-config@26.6.3(ts-node@10.9.2(@types/node@14.18.63)(typescript@4.9.5)):
     dependencies:
       '@babel/core': 7.28.3
-      '@jest/test-sequencer': 26.6.3
+      '@jest/test-sequencer': 26.6.3(ts-node@10.9.2(@types/node@14.18.63)(typescript@4.9.5))
       '@jest/types': 26.6.2
       babel-jest: 26.6.3(@babel/core@7.28.3)
       chalk: 4.1.2

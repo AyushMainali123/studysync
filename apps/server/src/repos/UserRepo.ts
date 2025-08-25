@@ -3,6 +3,7 @@ import { getRandomInt } from '@src/common/util/misc';
 import orm from './MockOrm';
 import { UserRepository } from '@studysync/repos';
 import { prisma } from '@studysync/db';
+import { DBUser } from '@studysync/types';
 
 /******************************************************************************
                                 Functions
@@ -39,7 +40,7 @@ async function persists(id: number): Promise<boolean> {
 /**
  * Get all users.
  */
-async function getAll() {
+async function getAll(): Promise<DBUser[]> {
   const db = await user.findAll();
   return db;
 }

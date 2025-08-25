@@ -3,6 +3,7 @@ import HttpStatusCodes from '@src/common/constants/HttpStatusCodes';
 
 import UserRepo from '@src/repos/UserRepo';
 import { IUser } from '@src/models/User';
+import { DBUser } from '@studysync/types';
 
 /******************************************************************************
                                 Constants
@@ -17,7 +18,7 @@ export const USER_NOT_FOUND_ERR = 'User not found';
 /**
  * Get all users.
  */
-function getAll(): Promise<IUser[]> {
+function getAll(): Promise<DBUser[]> {
   return UserRepo.getAll();
 }
 
