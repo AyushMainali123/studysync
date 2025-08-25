@@ -1,8 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
-  "installCommand": "pnpm install --prod=false",
-  "buildCommand": "pnpm --filter @studysync/server run build",
-  "outputDirectory": "dist",
-  "rewrites": [{ "source": "/(.*)", "destination": "/dist/src" }]
+  "rewrites": [{ "source": "/(.*)", "destination": "/src" }]
 }
