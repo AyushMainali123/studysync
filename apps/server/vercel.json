@@ -1,4 +1,12 @@
 {
-  "version": 2,
-  "outputDirectory": "dist"
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "pnpm install --filter=@studysync/server --prod=false",
+  "buildCommand": "pnpm run build --filter=@studysync/server",
+  "outputDirectory": "dist",
+  "functions": {
+    "dist/src/index.js": {
+      "memory": 1024,
+      "maxDuration": 10
+    }
+  }
 }
