@@ -29,7 +29,7 @@
       "persistent": true
     },
     "@studysync/server#build": {
-      "outputs": ["dist"]
+      "outputs": ["dist/**"]
     }
   },
   "globalEnv": ["GOOGLE_CLIENT_ID", "GOOGLE_CLIENT_SECRET", "DATABASE_URL"]
