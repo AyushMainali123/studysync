@@ -4,5 +4,5 @@
   "installCommand": "pnpm install --prod=false",
   "buildCommand": "pnpm --filter @studysync/server run build",
   "outputDirectory": "dist",
-  "rewrites": [{ "source": "/(.*)", "destination": "dist/src/index.js" }]
+  "rewrites": [{ "source": "/(.*)", "destination": "/src" }]
 }
