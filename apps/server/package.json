@@ -2,6 +2,7 @@
   "name": "@studysync/server",
   "scripts": {
     "dev": "tsx  watch src/index.ts",
+    "build": "tsc -b",
     "typecheck": "tsc --noEmit --watch",
     "test": "vitest",
     "test:watch": "vitest --watch",
@@ -27,7 +28,6 @@
     "zod": "^4.1.0",
     "@studysync/db": "workspace:*",
     "@studysync/repos": "workspace:*"
-
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
