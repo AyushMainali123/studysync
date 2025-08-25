@@ -2,6 +2,7 @@
   "name": "studysync",
   "private": true,
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
@@ -25,6 +26,6 @@
     "*.{ts,tsx,js,jsx,json,css,md}": "prettier --write"
   },
   "engines": {
-    "node": ">=18"
+    "node": "^22.0.0"
   }
 }

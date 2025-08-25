@@ -1,5 +1,6 @@
 {
   "$schema": "https://turborepo.com/schema.json",
+  "daemon": true,
   "ui": "tui",
   "tasks": {
     "db:generate": {
@@ -26,11 +27,10 @@
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "@studysync/server#build": {
+      "outputs": ["dist"]
     }
   },
-  "globalEnv": [
-    "GOOGLE_CLIENT_ID",
-    "GOOGLE_CLIENT_SECRET",
-    "DATABASE_URL"
-  ]
+  "globalEnv": ["GOOGLE_CLIENT_ID", "GOOGLE_CLIENT_SECRET", "DATABASE_URL"]
 }

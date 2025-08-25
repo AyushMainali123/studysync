@@ -17,6 +17,7 @@ export default tseslint.config(
       parserOptions: {
         project: './tsconfig.json',
         warnOnUnsupportedTypeScriptVersion: false,
+        tsconfigRootDir: __dirname,
       },
     },
   },
