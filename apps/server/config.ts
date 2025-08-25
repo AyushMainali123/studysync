@@ -9,7 +9,7 @@ const NODE_ENV = process.env.NODE_ENV ?? 'development';
 
 // Configure "dotenv"
 const result = dotenv.config({
-  path: path.join(__dirname, `./config/.env.${NODE_ENV}`),
+  path: path.join(__dirname, `./.env.${NODE_ENV}`),
 });
 if (result.error) {
   throw result.error;

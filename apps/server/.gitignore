@@ -3,5 +3,5 @@ dist/
 temp/
 **/**/*.log
 config.js
-config/.env.*
+.env.*
 
