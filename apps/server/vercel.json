@@ -4,5 +4,6 @@
   "installCommand": "pnpm install --prod=false",
   "buildCommand": "pnpm --filter @studysync/server run build",
   "outputDirectory": "dist",
-  "rewrites": [{ "source": "/(.*)", "destination": "/src" }]
+  "rewrites": [{ "source": "/(.*)", "destination": "/src" }],
+  "framework": "express"
 }
