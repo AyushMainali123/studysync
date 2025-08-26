@@ -1,16 +1,19 @@
-import { DBUser } from '@studysync/types';
+import { Client } from './_components/client/Client';
+import { ServiceFactory } from '@/lib/factory/service-factory';
 
 export default async function Home() {
-  const resRaw = await fetch('http://localhost:8000/api/users/all');
-  const users = (await resRaw.json()) as { users: DBUser[] };
+  const users = await ServiceFactory.userService().getAllUsers();
   return (
     <div>
-      {users.users.map((user) => (
+      {users.map((user) => (
         <div key={user?.id}>
           <h2>{user?.name}</h2>
           <p>{user?.email}</p>
         </div>
       ))}
+      <div>
+        <Client />
+      </div>
     </div>
   );
 }

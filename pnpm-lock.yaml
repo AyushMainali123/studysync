@@ -144,6 +144,12 @@ importers:
 
   apps/web:
     dependencies:
+      '@studysync/db':
+        specifier: workspace:*
+        version: link:../../packages/db
+      '@studysync/repos':
+        specifier: workspace:*
+        version: link:../../packages/repos
       '@studysync/types':
         specifier: workspace:*
         version: link:../../packages/types
