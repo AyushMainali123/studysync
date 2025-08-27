@@ -1,11 +1,8 @@
-import { DBUser } from '@studysync/types';
-// import { Client } from './_components/client/Client';
+import { ServiceFactory } from '@/lib/factory/service-factory';
+import { Client } from './_components/client/Client';
 
 export default async function Home() {
-  const usersRaw = await fetch(`https://jsonplaceholder.typicode.com/users`, {
-    cache: 'no-store',
-  });
-  const users = (await usersRaw.json()) as DBUser[];
+  const users = await ServiceFactory.userService().getAllUsers();
   return (
     <div>
       {users.map((user) => (
@@ -14,7 +11,9 @@ export default async function Home() {
           <p>{user?.email}</p>
         </div>
       ))}
-      <div>{/* <Client /> */}</div>
+      <div>
+        <Client />
+      </div>
     </div>
   );
 }
