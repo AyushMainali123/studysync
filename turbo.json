@@ -42,5 +42,10 @@
       ]
     }
   },
-  "globalEnv": ["GOOGLE_CLIENT_ID", "GOOGLE_CLIENT_SECRET", "DATABASE_URL"]
+  "globalEnv": [
+    "GOOGLE_CLIENT_ID",
+    "GOOGLE_CLIENT_SECRET",
+    "DATABASE_URL",
+    "NEXT_PUBLIC_BASE_URL"
+  ]
 }

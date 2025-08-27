@@ -1,16 +1,20 @@
 import { DBUser } from '@studysync/types';
+// import { Client } from './_components/client/Client';
 
 export default async function Home() {
-  const resRaw = await fetch('http://localhost:8000/api/users/all');
-  const users = (await resRaw.json()) as { users: DBUser[] };
+  const usersRaw = await fetch(`https://jsonplaceholder.typicode.com/users`, {
+    cache: 'no-store',
+  });
+  const users = (await usersRaw.json()) as DBUser[];
   return (
     <div>
-      {users.users.map((user) => (
+      {users.map((user) => (
         <div key={user?.id}>
           <h2>{user?.name}</h2>
           <p>{user?.email}</p>
         </div>
       ))}
+      <div>{/* <Client /> */}</div>
     </div>
   );
 }
