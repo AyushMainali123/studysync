@@ -1,10 +1,11 @@
 import { prisma } from '@studysync/db';
-import { UserRepository } from '@studysync/repos';
-import { UserService } from '@/services/user-service';
+import { AccountRepository, UserRepository } from '@studysync/repos';
+import { AuthService } from '@/services/auth';
 
 export class ServiceFactory {
-  static userService(): UserService {
-    const repo = new UserRepository(prisma);
-    return new UserService(repo);
+  static authService(): AuthService {
+    const userRepo = new UserRepository(prisma);
+    const accountRepo = new AccountRepository(prisma);
+    return new AuthService(userRepo, accountRepo);
   }
 }

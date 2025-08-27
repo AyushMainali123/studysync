@@ -1,15 +1,11 @@
 import { PrismaClient } from '@studysync/db';
-import { IBaseRepository } from '../base';
+import { BaseRepository } from '../base';
 import { type DBUser } from '@studysync/types';
 
-interface IUserRepository extends IBaseRepository<DBUser> {}
+interface IUserRepository {}
+interface ICreateUser extends Pick<DBUser, 'name' | 'email'> {}
 
-export class UserRepository implements IUserRepository {
-  private prisma: PrismaClient;
-
-  constructor(client: PrismaClient) {
-    this.prisma = client;
-  }
+export class UserRepository extends BaseRepository implements IUserRepository {
   async findAll(): Promise<DBUser[]> {
     return this.prisma.user.findMany();
   }
@@ -17,6 +13,25 @@ export class UserRepository implements IUserRepository {
   async findById(id: string): Promise<DBUser | null> {
     return this.prisma.user.findUnique({
       where: { id },
+    });
+  }
+
+  async createWithClient(client: PrismaClient, data: ICreateUser) {
+    return client.user.create({
+      data: {
+        name: data.name,
+        email: data.email,
+      },
+    });
+  }
+
+  async create(data: ICreateUser): Promise<DBUser> {
+    return this.createWithClient(this.prisma, data);
+  }
+
+  async findByEmail(email: string): Promise<DBUser | null> {
+    return this.prisma.user.findUnique({
+      where: { email },
     });
   }
 }

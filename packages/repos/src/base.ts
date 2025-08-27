@@ -1,4 +1,9 @@
-export interface IBaseRepository<T> {
-  findAll(): Promise<T[]>;
-  findById(id: string): Promise<T | null>;
+import { PrismaClient } from '@studysync/db';
+
+export abstract class BaseRepository {
+  protected prisma: PrismaClient;
+
+  constructor(prisma: PrismaClient) {
+    this.prisma = prisma;
+  }
 }
