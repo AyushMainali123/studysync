@@ -16,3 +16,11 @@ export type TGoogleUserInfo = {
   family_name: string;
   picture: string;
 };
+
+export type TAccessTokenResult = {
+  access_token: string;
+  issued_token_type: string;
+  token_type: string;
+  expires_in: number;
+  access_boundary_session_key: string;
+};
