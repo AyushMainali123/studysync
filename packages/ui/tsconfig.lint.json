@@ -1,11 +1,8 @@
 {
   "extends": "@studysync/typescript-config/react-library.json",
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@studysync/ui/*": ["./src/*"]
-    }
+    "outDir": "dist"
   },
-  "include": ["."],
+  "include": ["src", "turbo"],
   "exclude": ["node_modules", "dist"]
 }
