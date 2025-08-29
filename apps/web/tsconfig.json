@@ -8,7 +8,8 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@studysync/ui": ["../../packages/ui/src/*"]
     }
   },
   "include": [
