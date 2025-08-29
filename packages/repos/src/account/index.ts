@@ -1,7 +1,6 @@
 import { OAuthProvider, PrismaClient } from '@studysync/db';
 import { BaseRepository } from '../base';
 import { type DBAccount } from '@studysync/types';
-import { OAuthProviders } from '@/enums/oauth-providers';
 
 interface IAccountRepository {}
 
@@ -38,7 +37,7 @@ export class AccountRepository
   }
 
   findByProviderAccountId(
-    provider: OAuthProviders,
+    provider: OAuthProvider,
     accountId: string,
     user?: boolean
   ) {
