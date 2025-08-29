@@ -11,13 +11,16 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@studysync/ui": "workspace:*",
-    "next": "^15.5.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "@studysync/types": "workspace:*",
+    "@radix-ui/react-slot": "^1.2.3",
     "@studysync/db": "workspace:*",
-    "@studysync/repos": "workspace:*"
+    "@studysync/repos": "workspace:*",
+    "@studysync/types": "workspace:*",
+    "@studysync/ui": "workspace:*",
+    "class-variance-authority": "^0.7.1",
+    "next": "^15.5.0",
+    "next-themes": "^0.4.6",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@studysync/eslint-config": "workspace:*",

@@ -1,7 +1,7 @@
 import { NextResponse, NextRequest } from 'next/server';
 import { ServiceFactory } from './factory/service-factory';
-import { OAuthProviders } from './enums/oauth-providers';
 import { setTokenExpiration } from './utils/set-token-expire-date';
+import { OAuthProvider } from '@studysync/db';
 
 export async function middleware(request: NextRequest) {
   const googleAuthService = ServiceFactory.googleAuthService();
@@ -28,7 +28,7 @@ export async function middleware(request: NextRequest) {
         await googleAuthService.generateNewAccessToken(refreshToken);
       await accountRepo.updateAccessTokenUsingProvider(
         providerAccountId,
-        OAuthProviders.GOOGLE,
+        OAuthProvider.google,
         tokenResult.access_token,
         setTokenExpiration(tokenResult.expires_in)
       );

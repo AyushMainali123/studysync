@@ -4,8 +4,7 @@ import {
   TGoogleTokensResult,
   TGoogleUserInfo,
 } from './auth.types';
-import { prisma, PrismaClient } from '@studysync/db';
-import { OAuthProviders } from '@/enums/oauth-providers';
+import { OAuthProvider, prisma, PrismaClient } from '@studysync/db';
 import { setTokenExpiration } from '@/utils/set-token-expire-date';
 
 const AUTH_ERROR_MESSAGE = {
@@ -115,13 +114,13 @@ export class GoogleAuthService {
     if (userDB) {
       await this._accountRepo.updateAccessTokenUsingProvider(
         userInfo.id,
-        OAuthProviders.GOOGLE,
+        OAuthProvider.google,
         tokens.access_token,
         setTokenExpiration(tokens.expires_in)
       );
       await this._accountRepo.updateRefreshTokenUsingProvider(
         userInfo.id,
-        OAuthProviders.GOOGLE,
+        OAuthProvider.google,
         tokens.refresh_token!
       );
 
@@ -130,7 +129,7 @@ export class GoogleAuthService {
         name: userDB.name,
         email: userDB.email,
         tokens,
-        provider: OAuthProviders.GOOGLE,
+        provider: OAuthProvider.google,
         providerAccountId: userInfo.id,
       };
     } else {
@@ -144,7 +143,7 @@ export class GoogleAuthService {
 
         const account = await this._accountRepo.createWithClient(_client, {
           userId: user.id,
-          provider: OAuthProviders.GOOGLE,
+          provider: OAuthProvider.google,
           providerAccountId: userInfo.id,
           expiresAt: new Date(Date.now() + tokens.expires_in * 1000),
           accessToken: tokens.access_token,
@@ -158,7 +157,7 @@ export class GoogleAuthService {
         name: user.name,
         email: user.email,
         tokens,
-        provider: OAuthProviders.GOOGLE,
+        provider: OAuthProvider.google,
         providerAccountId: userInfo.id,
       };
     }
@@ -179,7 +178,7 @@ export class GoogleAuthService {
       const googleUserInfo = await this.getGoogleUserInfo(accessToken);
       // Get Account
       const userAccountData = await this._accountRepo.findByProviderAccountId(
-        OAuthProviders.GOOGLE,
+        OAuthProvider.google,
         googleUserInfo.id
       );
 

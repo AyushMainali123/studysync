@@ -1,7 +1,6 @@
-import { PrismaClient } from '@studysync/db';
+import { OAuthProvider, PrismaClient } from '@studysync/db';
 import { BaseRepository } from '../base';
 import { type DBAccount } from '@studysync/types';
-import { OAuthProviders } from '@/enums/oauth-providers';
 
 interface IAccountRepository {}
 
@@ -37,15 +36,8 @@ export class AccountRepository
     return this.createWithClient(this.prisma, data);
   }
 
-  findByUserId(userId: string): Promise<DBAccount | null> {
-    return this.prisma.account.findUnique({
-      where: { userId },
-      include: { user: true },
-    });
-  }
-
   findByProviderAccountId(
-    provider: OAuthProviders,
+    provider: OAuthProvider,
     accountId: string,
     user?: boolean
   ) {
@@ -57,7 +49,7 @@ export class AccountRepository
 
   updateAccessTokenUsingProvider(
     providerAccountId: string,
-    provider: string,
+    provider: OAuthProvider,
     accessToken: string,
     expiresAt: Date
   ) {
@@ -69,7 +61,7 @@ export class AccountRepository
 
   updateRefreshTokenUsingProvider(
     providerAccountId: string,
-    provider: string,
+    provider: OAuthProvider,
     refreshToken: string
   ) {
     return this.prisma.account.update({
