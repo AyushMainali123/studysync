@@ -1,8 +1,13 @@
 import { prisma } from '@studysync/db';
-import { AccountRepository, UserRepository } from '@studysync/repos';
+import {
+  AccountRepository,
+  UserRepository,
+  WorkspaceRepository,
+} from '@studysync/repos';
 import { GoogleAuthService } from '@/services/auth';
 import { cookies } from 'next/dist/server/request/cookies';
 import { TokenService } from '@/services/tokens';
+import { WorkspaceService } from '@/services/workspace';
 
 export class ServiceFactory {
   static googleAuthService(): GoogleAuthService {
@@ -14,5 +19,10 @@ export class ServiceFactory {
   static async tokenService(): Promise<TokenService> {
     const cookieStore = await cookies();
     return new TokenService(cookieStore);
+  }
+
+  static workspaceService(): WorkspaceService {
+    const workspaceRepo = new WorkspaceRepository(prisma);
+    return new WorkspaceService(workspaceRepo);
   }
 }

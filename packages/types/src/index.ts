@@ -6,3 +6,6 @@ export type DBUser = NonNullable<
 export type DBAccount = NonNullable<
   Awaited<ReturnType<PrismaClient['account']['findUnique']>>
 >;
+export type DBWorkspace = NonNullable<
+  Awaited<ReturnType<PrismaClient['workspace']['findUnique']>>
+>;

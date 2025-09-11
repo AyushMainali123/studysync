@@ -6,6 +6,7 @@ import {
 } from './auth.types';
 import { OAuthProvider, prisma, PrismaClient } from '@studysync/db';
 import { setTokenExpiration } from '@/utils/set-token-expire-date';
+import { ServiceFactory } from '@/factory/service-factory';
 
 const AUTH_ERROR_MESSAGE = {
   INVALID_TOKEN: 'Invalid or expired access token',
@@ -163,12 +164,16 @@ export class GoogleAuthService {
     }
   }
 
-  async ensureValidAccessToken(accessToken: string, refreshToken: string) {
+  async ensureValidAccessToken() {
+    const tokenService = await ServiceFactory.tokenService();
+    const accessToken = tokenService.getAccessToken();
+    const refreshToken = tokenService.getRefreshToken();
     try {
       await this.validateAccessToken(accessToken);
       return accessToken;
     } catch {
       const newToken = await this.generateNewAccessToken(refreshToken);
+      tokenService.setAccessToken(newToken.access_token);
       return newToken.access_token;
     }
   }

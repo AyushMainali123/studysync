@@ -1,17 +1,9 @@
 import { ServiceFactory } from '@/factory/service-factory';
-import { cookies } from 'next/headers';
 
 export async function GET() {
   try {
-    const cookieStore = await cookies();
-    const accessToken = cookieStore.get('access_token')?.value || '';
-    const refreshToken = cookieStore.get('refresh_token')?.value || '';
-
     const authService = ServiceFactory.googleAuthService();
-    const validAccessToken = await authService.ensureValidAccessToken(
-      accessToken,
-      refreshToken
-    );
+    const validAccessToken = await authService.ensureValidAccessToken();
     const accountData =
       await authService.getUserFromAccessToken(validAccessToken);
 
