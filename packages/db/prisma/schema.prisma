@@ -17,6 +17,12 @@ enum StorageItemType  {
   document
 }
 
+enum WorkspaceMemberRole {
+  admin
+  member
+  viewer
+}
+
 model Account {
   userId    String
   provider  OAuthProvider
@@ -39,10 +45,9 @@ model User {
     name      String 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
-    workspaces Workspace[] @relation("WorkspaceMember")
+    workspaces WorkspaceMember[]
     accounts  Account[]
 }
-
 
 
 model Workspace {
@@ -51,7 +56,7 @@ model Workspace {
     description String?
     createdAt   DateTime @default(now())
     updatedAt   DateTime @updatedAt
-    members     User[]   @relation("WorkspaceMember")
+    members     WorkspaceMember[]
     storageItems StorageItem[]
 }
 
@@ -66,4 +71,17 @@ model StorageItem {
   type      StorageItemType
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+
+model WorkspaceMember {
+  userId    String
+  workspaceId String
+  role      WorkspaceMemberRole @default(viewer)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@id([userId, workspaceId])
 }

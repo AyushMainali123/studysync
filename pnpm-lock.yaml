@@ -162,6 +162,12 @@ importers:
       '@studysync/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      '@tanstack/react-query':
+        specifier: ^5.87.4
+        version: 5.87.4(react@19.1.1)
+      '@tanstack/react-query-devtools':
+        specifier: ^5.87.4
+        version: 5.87.4(@tanstack/react-query@5.87.4(react@19.1.1))(react@19.1.1)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -180,6 +186,9 @@ importers:
       react-dom:
         specifier: ^19.1.0
         version: 19.1.1(react@19.1.1)
+      zod:
+        specifier: ^4.1.5
+        version: 4.1.5
     devDependencies:
       '@studysync/eslint-config':
         specifier: workspace:*
@@ -1522,6 +1531,23 @@ packages:
 
   '@tailwindcss/postcss@4.1.12':
     resolution: {integrity: sha512-5PpLYhCAwf9SJEeIsSmCDLgyVfdBhdBpzX1OJ87anT9IVR0Z9pjM0FNixCAUAHGnMBGB8K99SwAheXrT0Kh6QQ==}
+
+  '@tanstack/query-core@5.87.4':
+    resolution: {integrity: sha512-uNsg6zMxraEPDVO2Bn+F3/ctHi+Zsk+MMpcN8h6P7ozqD088F6mFY5TfGM7zuyIrL7HKpDyu6QHfLWiDxh3cuw==}
+
+  '@tanstack/query-devtools@5.87.3':
+    resolution: {integrity: sha512-LkzxzSr2HS1ALHTgDmJH5eGAVsSQiuwz//VhFW5OqNk0OQ+Fsqba0Tsf+NzWRtXYvpgUqwQr4b2zdFZwxHcGvg==}
+
+  '@tanstack/react-query-devtools@5.87.4':
+    resolution: {integrity: sha512-JYcnVJBBW1DCPyNGM0S2CyrLpe6KFiL2gpYd/k9tAp62Du7+Y27zkzd+dKFyxpFadYaTxsx4kUA7YvnkMLVUoQ==}
+    peerDependencies:
+      '@tanstack/react-query': ^5.87.4
+      react: ^18 || ^19
+
+  '@tanstack/react-query@5.87.4':
+    resolution: {integrity: sha512-T5GT/1ZaNsUXf5I3RhcYuT17I4CPlbZgyLxc/ZGv7ciS6esytlbjb3DgUFO6c8JWYMDpdjSWInyGZUErgzqhcA==}
+    peerDependencies:
+      react: ^18 || ^19
 
   '@tootallnate/once@1.1.2':
     resolution: {integrity: sha512-RbzJvlNzmRq5c3O09UipeuXno4tA1FE6ikOjxZK0tuxVv3412l64l5t1W5pj4+rJq9vpkm/kwiR07aZXnsKPxw==}
@@ -5767,6 +5793,9 @@ packages:
   zod@4.1.1:
     resolution: {integrity: sha512-SgMZK/h8Tigt9nnKkfJMvB/mKjiJXaX26xegP4sa+0wHIFVFWVlsQGdhklDmuargBD3Hsi3rsQRIzwJIhTPJHA==}
 
+  zod@4.1.5:
+    resolution: {integrity: sha512-rcUUZqlLJgBC33IT3PNMgsCq6TzLQEG/Ei/KTCU0PedSWRMAXoOUN+4t/0H+Q8bdnLPdqUYnvboJT0bn/229qg==}
+
 snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
@@ -7002,6 +7031,21 @@ snapshots:
       '@tailwindcss/oxide': 4.1.12
       postcss: 8.5.6
       tailwindcss: 4.1.12
+
+  '@tanstack/query-core@5.87.4': {}
+
+  '@tanstack/query-devtools@5.87.3': {}
+
+  '@tanstack/react-query-devtools@5.87.4(@tanstack/react-query@5.87.4(react@19.1.1))(react@19.1.1)':
+    dependencies:
+      '@tanstack/query-devtools': 5.87.3
+      '@tanstack/react-query': 5.87.4(react@19.1.1)
+      react: 19.1.1
+
+  '@tanstack/react-query@5.87.4(react@19.1.1)':
+    dependencies:
+      '@tanstack/query-core': 5.87.4
+      react: 19.1.1
 
   '@tootallnate/once@1.1.2': {}
 
@@ -12076,3 +12120,5 @@ snapshots:
   zod@3.25.76: {}
 
   zod@4.1.1: {}
+
+  zod@4.1.5: {}

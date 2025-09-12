@@ -11,7 +11,7 @@ The following deliverables outline the core components and functionalities of th
 ### 1. User Authentication and Profile System
 - **Description**: A secure system for user registration, login, and profile management.
 - **Components**:
-  - Email-based and OAuth (e.g., Google) authentication using JWT or Firebase Auth.
+  -  OAuth (e.g., Google) authentication using JWT or Firebase Auth.
   - User profile creation with fields for name, major, enrolled courses, and study preferences.
   - Profile management interface for updating personal details and preferences.
 - **Technical Details**:
