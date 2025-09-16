@@ -49,7 +49,7 @@ export default async function WorkspaceList() {
         {workspaces.map((workspace) => (
           <li key={workspace.id} className="group">
             <Link
-              href={`/workspace/${workspace.id}`}
+              href={`/w/${workspace.id}`}
               className="flex items-center justify-between py-3 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               <TypographyMuted className="truncate" as={'div'}>

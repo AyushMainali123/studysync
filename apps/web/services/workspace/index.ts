@@ -20,6 +20,52 @@ export class WorkspaceService {
     return response;
   }
 
+  async getUserWorkspaceById(input: { userId: string; workspaceId: string }) {
+    const parsed = z
+      .object({
+        userId: z.cuid(),
+        workspaceId: z.cuid(),
+      })
+      .parse(input);
+
+    const response = await this._workspaceRepo.getUserWorkspaceById(
+      parsed.userId,
+      parsed.workspaceId
+    );
+    return response;
+  }
+
+  async getWorkspaceMemberById(input: { workspaceId: string }) {
+    const parsed = z
+      .object({
+        workspaceId: z.cuid(),
+      })
+      .parse(input);
+
+    const response = await this._workspaceRepo.getWorkspaceMembers(
+      parsed.workspaceId
+    );
+    return response;
+  }
+
+  async getWorkspaceMemberByUserId(input: {
+    workspaceId: string;
+    userId: string;
+  }) {
+    const parsed = z
+      .object({
+        workspaceId: z.cuid(),
+        userId: z.cuid(),
+      })
+      .parse(input);
+
+    const response = this._workspaceRepo.getUserWorkspaceById(
+      parsed.userId,
+      parsed.workspaceId
+    );
+    return response;
+  }
+
   async createWorkspace(input: {
     ownerId: string;
     name: string;

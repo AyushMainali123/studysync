@@ -11,4 +11,7 @@ export const mutationKeys = {
     update: (id: string) => ['workspaces', id, 'update'],
     delete: (id: string) => ['workspaces', id, 'delete'],
   },
+  storageitem: {
+    create: ['storageitem', 'create'],
+  },
 };

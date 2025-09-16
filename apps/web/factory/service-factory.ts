@@ -1,6 +1,7 @@
 import { prisma } from '@studysync/db';
 import {
   AccountRepository,
+  StorageItemRepository,
   UserRepository,
   WorkspaceRepository,
 } from '@studysync/repos';
@@ -8,6 +9,7 @@ import { GoogleAuthService } from '@/services/auth';
 import { cookies } from 'next/dist/server/request/cookies';
 import { TokenService } from '@/services/tokens';
 import { WorkspaceService } from '@/services/workspace';
+import { StorageItemService } from '@/services/storageitem';
 
 export class ServiceFactory {
   static googleAuthService(): GoogleAuthService {
@@ -24,5 +26,12 @@ export class ServiceFactory {
   static workspaceService(): WorkspaceService {
     const workspaceRepo = new WorkspaceRepository(prisma);
     return new WorkspaceService(workspaceRepo);
+  }
+
+  static storageItemService(): StorageItemService {
+    return new StorageItemService(
+      new StorageItemRepository(prisma),
+      new WorkspaceRepository(prisma)
+    );
   }
 }
