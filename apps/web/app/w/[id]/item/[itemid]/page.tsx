@@ -1,3 +1,9 @@
+import { Editor } from '@/components/editor';
+
 export default function SingleItemPage() {
-  return <div>Hello from Single Page</div>;
+  return (
+    <div>
+      <Editor />
+    </div>
+  );
 }
