@@ -2,7 +2,13 @@ import { PrismaClient } from '@studysync/db';
 import { BaseRepository } from '../base';
 import { type DBUser } from '@studysync/types';
 
-interface IUserRepository {}
+interface IUserRepository {
+  findAll(): Promise<DBUser[]>;
+  findById(id: string): Promise<DBUser | null>;
+  create(data: ICreateUser): Promise<DBUser>;
+  findByEmail(email: string): Promise<DBUser | null>;
+}
+
 interface ICreateUser extends Pick<DBUser, 'name' | 'email'> {}
 
 export class UserRepository extends BaseRepository implements IUserRepository {

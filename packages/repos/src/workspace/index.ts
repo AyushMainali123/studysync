@@ -14,6 +14,22 @@ export class WorkspaceRepository
     });
   }
 
+  async getUserWorkspaceById(
+    userId: string,
+    workspaceId: string
+  ): Promise<DBWorkspace | null> {
+    return this.prisma.workspace.findUnique({
+      where: {
+        id: workspaceId,
+        members: {
+          some: {
+            userId: userId,
+          },
+        },
+      },
+    });
+  }
+
   async createWorkspaceWithClient(
     client: typeof this.prisma,
     name: string,
@@ -60,5 +76,27 @@ export class WorkspaceRepository
       workspaceId,
       role
     );
+  }
+
+  async getWorkspaceMembers(workspaceId: string) {
+    return this.prisma.workspaceMember.findMany({
+      where: {
+        workspaceId,
+      },
+      include: {
+        user: true,
+      },
+    });
+  }
+
+  async getWorkspaceMemberByUserId(userId: string, workspaceId: string) {
+    return this.prisma.workspaceMember.findUnique({
+      where: {
+        userId_workspaceId: {
+          userId,
+          workspaceId,
+        },
+      },
+    });
   }
 }

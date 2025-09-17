@@ -9,3 +9,11 @@ export type DBAccount = NonNullable<
 export type DBWorkspace = NonNullable<
   Awaited<ReturnType<PrismaClient['workspace']['findUnique']>>
 >;
+
+export type DBStorageItem = NonNullable<
+  Awaited<ReturnType<PrismaClient['storageItem']['findUnique']>>
+>;
+
+export type DBWorkspaceMember = NonNullable<
+  Awaited<ReturnType<PrismaClient['workspaceMember']['findUnique']>>
+>;
